@@ -28,37 +28,37 @@ void setup() {
 void loop() {
   // start working...
      Serial.println("=================================");
-  Serial.println("Sample DHT11...");
-  // read without samples.
+  Serial.println("Sample DHT11..."); // read without samples.
   byte temperature = 0;
   byte humidity = 0;
   int err = SimpleDHTErrSuccess;
   if ((err = dht11.read(&temperature, &humidity, NULL)) != SimpleDHTErrSuccess) {
-    Serial.print("Read DHT11 failed, err="); Serial.print(SimpleDHTErrCode(err));
-    Serial.print(","); Serial.println(SimpleDHTErrDuration(err)); delay(1000);
+    Serial.print("Read DHT11 failed, err="); 
+    Serial.print(SimpleDHTErrCode(err));
+    Serial.print(","); 
+    Serial.println(SimpleDHTErrDuration(err)); 
+    delay(1000);
     return;
   }
   
   Serial.print("Sample OK: ");
   Serial.print((int)temperature); Serial.print(" *C, "); 
   Serial.print((int)humidity); Serial.println(" H");
-  lcd.clear();                    // LCD 초기화
-     lcd.setCursor(0,0);             //LCD의 첫 번째 줄 첫 번째 자리를 나타냄
-     lcd.print("temperature="); //LCD의 첫 번째 줄 첫 번째 자리에 Hello,Every one!을 표시함
-     lcd.setCursor(12,0);             //LCD의 첫 번째 줄 첫 번째 자리를 나타냄
-     lcd.print((int)temperature); //LCD의 첫 번째 줄 첫 번째 자리에 Hello,Every one!을 표시함
-      lcd.setCursor(14,0);             //LCD의 첫 번째 줄 첫 번째 자리를 나타냄
-     lcd.print((char)0xDF); //LCD의 첫 번째 줄 첫 번째 자리에 Hello,Every one!을 표시함
-     lcd.setCursor(15,0);             //LCD의 첫 번째 줄 첫 번째 자리를 나타냄
-     lcd.print("C"); //LCD의 첫 번째 줄 첫 번째 자리에 Hello,Every one!을 표시함
-     lcd.setCursor(0,1);            //LCD의 두 번째 줄 첫 번째 자리를 나타냄
-     lcd.print("humidity=");  //LCD의 두 번째 줄 첫 번째 자리에 Welcome Reader!를 표시함
-      lcd.setCursor(9,1);            //LCD의 두 번째 줄 첫 번째 자리를 나타냄
-     lcd.print((int)humidity);  //LCD의 두 번째 줄 첫 번째 자리에 Welcome Reader!를 표시함
-     lcd.setCursor(11,1);            //LCD의 두 번째 줄 첫 번째 자리를 나타냄
-     lcd.print("%");  //LCD의 두 번째 줄 첫 번째 자리에 Welcome Reader!를 표시함![F9E9FEC4-74FD-4934-9F6A-9DED46921EE4](https://user-images.githubusercontent.com/102523600/162729294-8f265280-f687-4207-9336-cc7fb954cfab.jpeg)
-
-  
+  lcd.clear();                   
+     lcd.setCursor(0,0);             
+     lcd.print("temperature="); 
+     lcd.setCursor(12,0);             
+     lcd.print((int)temperature); 
+      lcd.setCursor(14,0);             
+     lcd.print((char)0xDF); 
+     lcd.setCursor(15,0);             
+     lcd.print("C"); 
+     lcd.setCursor(0,1);          
+     lcd.print("humidity=");  
+      lcd.setCursor(9,1);            
+     lcd.print((int)humidity); 
+     lcd.setCursor(11,1);           
+     lcd.print("%"); 
   // DHT11 sampling rate is 1HZ.
   delay(1500);
 }
