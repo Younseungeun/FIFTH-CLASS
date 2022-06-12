@@ -6,59 +6,54 @@
 ![image](https://user-images.githubusercontent.com/102523600/173249725-bf132c18-567f-4779-8b6a-cc3f0bd1c388.png)
 - DHT11 was not found, so I replaced it with another sensor
 ### CODE
-#include <SimpleDHT.h>
-#include <Wire.h> 
-#include <LiquidCrystal_I2C.h>        //header file
-LiquidCrystal_I2C lcd(0x27,16,2);     
-
-// for DHT11, 
-//      VCC: 5V or 3V
-//      GND: GND
-//      DATA: 6
-int pinDHT11 = 6;
-SimpleDHT11 dht11(pinDHT11);
-
-void setup() {
-  Serial.begin(9600);
-  lcd.init();                         
-     lcd.backlight();                
- 
-}
-  
-void loop() {
-  // start working...
-     Serial.println("=================================");
-  Serial.println("Sample DHT11..."); // read without samples.
-  byte temperature = 0;
-  byte humidity = 0;
-  int err = SimpleDHTErrSuccess;
-  if ((err = dht11.read(&temperature, &humidity, NULL)) != SimpleDHTErrSuccess) {
-    Serial.print("Read DHT11 failed, err="); 
-    Serial.print(SimpleDHTErrCode(err));
-    Serial.print(","); 
-    Serial.println(SimpleDHTErrDuration(err)); 
-    delay(1000);
-    return;
-  }
-  
-  Serial.print("Sample OK: ");
-  Serial.print((int)temperature); Serial.print(" *C, "); 
-  Serial.print((int)humidity); Serial.println(" H");
-  lcd.clear();                   
-     lcd.setCursor(0,0);             
-     lcd.print("temperature="); 
-     lcd.setCursor(12,0);             
-     lcd.print((int)temperature); 
-      lcd.setCursor(14,0);             
-     lcd.print((char)0xDF); 
-     lcd.setCursor(15,0);             
-     lcd.print("C"); 
-     lcd.setCursor(0,1);          
-     lcd.print("humidity=");  
-      lcd.setCursor(9,1);            
-     lcd.print((int)humidity); 
-     lcd.setCursor(11,1);           
-     lcd.print("%"); 
-  // DHT11 sampling rate is 1HZ.
-  delay(1500);
-}
+1. #include <SimpleDHT.h>
+2. #include <Wire.h> 
+3. #include <LiquidCrystal_I2C.h>        //header file
+4. LiquidCrystal_I2C lcd(0x27,16,2);     
+5. // for DHT11, 
+6. //      VCC: 5V or 3V
+7. //      GND: GND
+8. //      DATA: 6
+9. int pinDHT11 = 6;
+10. SimpleDHT11 dht11(pinDHT11);
+11. void setup() {
+12. Serial.begin(9600);
+13. lcd.init();                         
+14. lcd.backlight();                
+15. }
+16. void loop() {
+17. // start working...
+18. Serial.println("=================================");
+19. Serial.println("Sample DHT11..."); // read without samples.
+20. byte temperature = 0;
+21. byte humidity = 0;
+22. int err = SimpleDHTErrSuccess;
+23. if ((err = dht11.read(&temperature, &humidity, NULL)) != SimpleDHTErrSuccess) {
+24. Serial.print("Read DHT11 failed, err="); 
+25. Serial.print(SimpleDHTErrCode(err));
+26. Serial.print(","); 
+27. Serial.println(SimpleDHTErrDuration(err)); 
+28. delay(1000);
+29. return;
+30. }
+31. Serial.print("Sample OK: ");
+32. Serial.print((int)temperature); Serial.print(" *C, "); 
+33. Serial.print((int)humidity); Serial.println(" H");
+34. lcd.clear();                   
+35. lcd.setCursor(0,0);             
+36. lcd.print("temperature="); 
+37. lcd.setCursor(12,0);             
+38. lcd.print((int)temperature); 
+39. lcd.setCursor(14,0);             
+40. lcd.print((char)0xDF); 
+41. lcd.setCursor(15,0);             
+42. lcd.print("C"); 
+43. lcd.setCursor(0,1);          
+44. lcd.print("humidity=");  
+45. lcd.setCursor(9,1);            
+46. lcd.print((int)humidity); 
+47. lcd.setCursor(11,1);           
+48. lcd.print("%"); 
+49. // DHT11 sampling rate is 1HZ.
+50. delay(1500);
+51. }
