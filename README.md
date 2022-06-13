@@ -3,7 +3,7 @@
 ## TOPIC
 - TEMPERTURE sensor(DHT11)
 ### TEMPERTURE sensor(DHT11)
-![image](https://user-images.githubusercontent.com/102523600/173249725-bf132c18-567f-4779-8b6a-cc3f0bd1c388.png)
+![image](https://user-images.githubusercontent.com/102523600/173327234-841e0e62-b08d-4ad5-9896-eefd074dcb9f.png)
 - DHT11 was not found, so I replaced it with another sensor
 ### CODE
 1. #include <SimpleDHT.h>
